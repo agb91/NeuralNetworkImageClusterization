@@ -1,0 +1,67 @@
+import org.neuroph.core.NeuralNetwork;
+import org.neuroph.imgrec.*;
+import org.neuroph.contrib.*;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.SortedSet;
+import java.util.TreeSet;
+import java.io.File;
+import java.io.IOException;
+
+public class Main {
+
+	public static void main( String[] args ) {
+		// TODO Auto-generated method stub
+		// load trained neural network saved with Neuroph Studio (specify some existing neural network file here)
+	    NeuralNetwork nnet = NeuralNetwork.load( "/home/andrea/Desktop/neuroph/PROJECTS/neuroph/TrueImagesExpanded/Neural Networks/NN.nnet" ); // load trained neural network saved with Neuroph Studio
+	    // get the image recognition plugin from neural network
+	    
+	    System.out.println( "\n normal elephant: " );
+	    classify( "/home/andrea/Desktop/neuroph/PROJECTS/eclipse/TestNeurophTRUEImages/images/elephant.jpg" , nnet , false );
+	    
+	    System.out.println( "\n another normal elephant: " );
+	    classify( "/home/andrea/Desktop/neuroph/PROJECTS/eclipse/TestNeurophTRUEImages/images/trueElephant.jpg" , nnet , false );
+	 
+	    System.out.println( "\n the third normal elephant: " );
+	    classify( "/home/andrea/Desktop/neuroph/PROJECTS/eclipse/TestNeurophTRUEImages/images/anotherElephant.jpg" , nnet , false );
+	 
+	}
+	
+	private static void classify( String path , NeuralNetwork nn , boolean verbose )
+	{
+		ImageRecognitionPlugin imageRecognition = ( ImageRecognitionPlugin ) nn.getPlugin( ImageRecognitionPlugin.class ); // get the image recognition plugin from neural network
+		try {
+	         // image recognition is done here ( specify some existing image file )
+	        HashMap<String, Double> output = imageRecognition.recognizeImage( new File( path ) );
+	        if( verbose )
+	        {
+	        	System.out.println( output.toString() );
+	        }
+	        String response = getMaxHM( output );
+	        System.out.println( response );
+	    } catch(IOException ioe) {
+	        ioe.printStackTrace();
+	    }
+	}
+	
+	private static String getMaxHM ( HashMap<String , Double> hm )
+	{
+		Double max = 0.0;
+		String maxString = ""; 
+		Iterator it = hm.entrySet().iterator();
+	    while (it.hasNext()) {
+	        Map.Entry pair = (Map.Entry)it.next();
+	        String k = ( String ) pair.getKey();
+	        Double v = ( Double ) pair.getValue();
+	        //System.out.println( "k = " + k + " ; v = " + v );
+	        if ( v > max )
+	        {
+	        	max = v;
+	        	maxString = k;
+	        }
+	    }
+	    return " thisIsAn: " + maxString + ", with probability : " + max;
+	}
+
+}

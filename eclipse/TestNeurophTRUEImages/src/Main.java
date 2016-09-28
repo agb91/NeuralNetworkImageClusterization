@@ -14,39 +14,21 @@ public class Main {
 	public static void main( String[] args ) {
 		// TODO Auto-generated method stub
 		// load trained neural network saved with Neuroph Studio (specify some existing neural network file here)
-	    NeuralNetwork nnet = NeuralNetwork.load( "/home/andrea/Desktop/neuroph/PROJECTS/ImageClusteringDoubleCat/Neural Networks/SecondAttempt12.nnet" ); // load trained neural network saved with Neuroph Studio
+	    NeuralNetwork nnet = NeuralNetwork.load( "/home/andrea/Desktop/neuroph/PROJECTS/neuroph/TrueImagesExpanded/Neural Networks/BIG.nnet" ); // load trained neural network saved with Neuroph Studio
 	    // get the image recognition plugin from neural network
 	    
 	    System.out.println( "\n normal elephant: " );
-	    classify( "/home/andrea/Desktop/neuroph/PROJECTS/TestNeurophImages/images/elephantShape.png" , nnet , false );
+	    classify( "/home/andrea/Desktop/neuroph/PROJECTS/eclipse/TestNeurophTRUEImages/images/elephant.jpg" , nnet , true );
 	    
-	    System.out.println( "\n confused elephant: " );
-	    classify( "/home/andrea/Desktop/neuroph/PROJECTS/TestNeurophImages/images/confusedElephantShape.png" , nnet , false );
+	    System.out.println( "\n another normal elephant: " );
+	    classify( "/home/andrea/Desktop/neuroph/PROJECTS/eclipse/TestNeurophTRUEImages/images/trueElephant.jpg" , nnet , true );
+	 
+	    System.out.println( "\n the third normal elephant: " );
+	    classify( "/home/andrea/Desktop/neuroph/PROJECTS/eclipse/TestNeurophTRUEImages/images/anotherElephant.jpg" , nnet , true );
 	    
-	    System.out.println( "\n very confused elephant: " );
-	    classify( "/home/andrea/Desktop/neuroph/PROJECTS/TestNeurophImages/images/veryConfusedElephantShape.png" , nnet , false );
+	    System.out.println( "\n the third normal elephant: " );
+	    classify( "/home/andrea/Desktop/neuroph/PROJECTS/eclipse/TestNeurophTRUEImages/images/butterflElephant.jpg" , nnet , true );
 	    
-	    System.out.println( "\n extremely confused elephant: " );
-	    classify( "/home/andrea/Desktop/neuroph/PROJECTS/TestNeurophImages/images/extremelyConfusedElephantShape.png" , nnet , false );
-	    
-	    System.out.println( "\n nonsense elephant: " );
-	    classify( "/home/andrea/Desktop/neuroph/PROJECTS/TestNeurophImages/images/nonsenseElefantShape.png" , nnet , false );
-	    
-	    System.out.println( "\n flying elephant: " );
-	    classify( "/home/andrea/Desktop/neuroph/PROJECTS/TestNeurophImages/images/flyingElephantShape.png" , nnet , false );
-	    
-	    System.out.println( "\n little elephant: " );
-	    classify( "/home/andrea/Desktop/neuroph/PROJECTS/TestNeurophImages/images/littleElephantShape.png" , nnet , false );
-	    
-	    System.out.println( "\n other elephant: " );
-	    classify( "/home/andrea/Desktop/neuroph/PROJECTS/TestNeurophImages/images/anotherElephantShape.png" , nnet , false );
-	   
-	    System.out.println( "\n again, anoother elephant: " );
-	    classify( "/home/andrea/Desktop/neuroph/PROJECTS/TestNeurophImages/images/againAnotherElephantShape.png" , nnet , false );
-	   
-	    System.out.println("\n modern elephant: " );
-	    classify( "/home/andrea/Desktop/neuroph/PROJECTS/TestNeurophImages/images/modernElephant.jpg" , nnet , false );
-	   
 	}
 	
 	private static void classify( String path , NeuralNetwork nn , boolean verbose )

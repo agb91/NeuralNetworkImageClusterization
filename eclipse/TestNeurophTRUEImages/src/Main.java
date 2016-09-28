@@ -14,7 +14,7 @@ public class Main {
 	public static void main( String[] args ) {
 		// TODO Auto-generated method stub
 		// load trained neural network saved with Neuroph Studio (specify some existing neural network file here)
-	    NeuralNetwork nnet = NeuralNetwork.load( "/home/andrea/Desktop/neuroph/PROJECTS/neuroph/TrueImagesExpanded/Neural Networks/BIG.nnet" ); // load trained neural network saved with Neuroph Studio
+	    NeuralNetwork nnet = NeuralNetwork.load( "/home/andrea/Desktop/neuroph/PROJECTS/neuroph/ImageClusteringDoubleCat/Neural Networks/Generated.nnet" ); // load trained neural network saved with Neuroph Studio
 	    // get the image recognition plugin from neural network
 	    
 	    System.out.println( "\n normal elephant: " );

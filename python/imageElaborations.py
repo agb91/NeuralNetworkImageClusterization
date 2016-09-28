@@ -55,14 +55,15 @@ def segment( img ):
 	return thresh
 
 
-image = cv2.imread( 'test.jpg' )
+image = cv2.imread( 'bird/2.jpg' , 0 )
 
-#image = quantizeColors( image , 4 )
 
-#image = equalize( image )
+image = equalize( image )
+#image = quantizeColors( image , 2 )
+
 #image = canny( image , 250 , 450 )
 
-#image = segment( image )
+image = segment( image )
 cv2.imwrite( 'output.jpg' , image )
 
 cv2.waitKey(0)	

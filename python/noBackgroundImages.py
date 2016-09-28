@@ -48,9 +48,10 @@ def writeAllImages( path , images ):
 def discardImagesWithBackground( images ):
 	newImages = []
 	for img in images:
-		px = img[ 1 , 1 ]
+		height, width = img.shape[:2]
 		if ( img[ 1 , 1 ] > ( 235 , 235 , 235 ) ).all():
-			newImages.append( img )	
+			if ( img[ height - 1 , width - 1 ] > ( 235 , 235 , 235 ) ).all():
+				newImages.append( img )	
 	return newImages	
 
 
